@@ -1,0 +1,68 @@
+body {
+    margin: 0px;
+    overflow: hidden;
+}
+.menu {
+    position: fixed;
+    right: 0px;
+    width: 100px;
+    height: 100vh;
+}
+.page {
+    background-image: url('');
+    background-size: cover;
+    padding-bottom: 20%;
+}
+.header {
+    transition-property: all;
+}
+.imgContainer {
+    height: 160px;
+    width: 160px;
+}
+.card img {
+    width:160px;
+    height: 160px;
+    position: absolute;
+    border-radius: 9px;
+}
+.card {
+    transform-style: preserve-3d;
+    transition: all 0.5s ease;
+    height: 160px;
+    width: 160px;
+    margin: 5px;
+    cursor: pointer;
+    position: relative;
+}
+.card.upside {
+    transform: rotateY(180deg)
+}
+.backImg {
+    position: absolute;
+    backface-visibility: hidden;
+}
+.frontImg {
+    position: absolute;
+    backface-visibility: hidden;
+    transform: rotateY(180deg);
+}
+#modal-wrapper {
+    position: fixed;
+    top:0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 123;
+}
+.myModal {
+    background-color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    min-width: 200px;
+    min-height: 100px;;
+}
+

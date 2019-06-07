@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css?family=Yantramanav:100');
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400');
+
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+}
+.intro {
+    height: 100%;
+    width: 100%;
+    margin: auto;
+    background: url('');
+    display: table;
+    top: 0;
+    background-size: cover;
+}
+.intro .inner {
+    display: table-cell; /*like flex, with the 'vertical-align: middle' will bring to middle of the page */
+    vertical-align: middle;
+    width: 100%;
+    max-width: none; /* to make it 100% centerd */
+}
+.content {
+    max-width: 600px;
+    margin: 0 auto; /* to center inside the page */
+    text-align: center; /* to center inside the div */
+    padding-bottom: 25%;
+}
+.content h1{
+    font-family: 'Yantramanav', sans-serif; /* !!!! */
+    font-size: 600%;
+    font-weight: 100;
+    line-height: 70%;
+    color: #E1EFE9;
+}
+.btn {
+    font-family: 'Montserrat' ,sans-serif;
+    font-size: 135%;
+    font-weight: 400;
+    color: #3A6168;
+    text-decoration: none; /* to delete the underline in a link */
+    border: solid #3A6168;
+    padding: 10px 20px;
+    border-radius: 9px;
+    transition: all 0.5s; /* to slow down the hover effect */
+}
+.btn:hover {
+    color: #CBDFD6;
+    border: solid #CBDFD6 2px;
+}
+
+/*--- Media Queries --*/
+@media screen and (max-width: 900px) {
+    .content {
+        padding-bottom: 30%;
+    }
+    .content h1 {
+        font-size: 450%;
+    }
+    .btn {
+        font-size: 110%;
+        padding: 9px 17px;
+    }
+}
+@media screen and (max-width: 768px) {
+    .content {
+        padding-bottom: 40%;
+    }
+    .content h1 {
+        font-size: 300%;
+    }
+    .btn {
+        font-size: 110%;
+        padding: 7px 15px;
+    }
+}
+@media screen and (max-width: 480px) {
+    .content {
+        padding-bottom: 50%;
+    }
+    .content h1 {
+        font-size: 250%;
+    }
+    .btn {
+        font-size: 110%;
+        padding: 6px 14px;
+    }
+}
