@@ -1,13 +1,7 @@
-var imgArr = ['img1', 'img1', 'img2', 'img2', 'img3', 'img3', 'img4', 'img4', 'img5', 'img5', 'img6', 'img6',]
-var mySound = new sound('./sound/backsound.mp3');
-var victorySound = new sound('./sound/win.mp3');
-
 $(document).ready(newGame);
 
 $('#new-game').on('click', () => {
-    $('#modal-wrapper').attr('style', 'display:none;')
-    $('.card').removeClass('upside');
-    newGame();
+    window.location = document.referrer;
 });
 
 $('#exit').on('click', () => {
@@ -15,8 +9,8 @@ $('#exit').on('click', () => {
     $('#exit').attr('style', 'display:none;')
     var exitMsg = $('<div/>');
     exitMsg.text("see you later winer");
-    $('.myModal').append(exitMsg);
-    setTimeout(() => { window.location.assign('file:///C:/ITC/dev/Assignments/Animated%20Landing%20Starter%20Files/index2.html') }, 2000);
+    $('.my-modal').append(exitMsg);
+    setTimeout(() => { window.location.assign('file:///C:/ITC/dev/Assignments/Assignment5-memorygame/index.html', 2000) });
 });
 
 $('#fresh').on('click', () => {
@@ -24,39 +18,40 @@ $('#fresh').on('click', () => {
     newGame();
 });
 
-
-
 function newGame() {
-    var previousCardFliped = null; // restart couple search
-    var flipedMatches = 0; //how many couples allready flipped
+    var imgArr = ['img1', 'img1', 'img2', 'img2', 'img3', 'img3', 'img4', 'img4', 'img5', 'img5', 'img6', 'img6',]
+    var mySound = new sound('./sound/backsound.mp3');
+    var victorySound = new sound('./sound/win.mp3');
+    var previousCardFliped = null; 
+    var flipedMatches = 0; 
     var couplesInTheGame = 6;
     var flipedCards = 0;
 
     shuffleArray(imgArr);
     for (var i = 0; i < imgArr.length; i++) {
         $('.card').eq(i).attr('name', imgArr[i]);
-        $('.card .frontImg').eq(i).attr('src', "./img/" + imgArr[i] + ".jpg");
+        $('.card .front-img').eq(i).attr('src', "./img/" + imgArr[i] + ".png");
     }
 
-    // clicking cards
-    $('.card').on('click', function (evenObj) {
+    $('.card').on('click', function () {
         mySound.play();
         flipedCards = flipedCards + 1;
-        if (flipedCards <= 2) { // cant flip more than 2 cards once
+        if (flipedCards <= 2) { 
             var cardToFlip = $(this);
-            if (cardToFlip.hasClass('upside')) return; // check if you press allready flipped card
-            cardToFlip.addClass('upside'); // flip
-            if (previousCardFliped === null) { // first card in a couple search
+            if (cardToFlip.hasClass('upside')) return; 
+            cardToFlip.addClass('upside'); 
+            if (previousCardFliped === null) { 
                 previousCardFliped = cardToFlip;
 
             } else {
                 var card1 = previousCardFliped.attr('name');
                 var card2 = cardToFlip.attr('name');
 
-                if (card1 === card2) { // match
+                if (card1 === card2) { 
                     flipedMatches++;
                     if (flipedMatches === couplesInTheGame) {
-                        mySound.pause();
+                        console.log("win");
+                        // var mySound = mySound.pause();
                         victorySound.play();
                         $('#modal-wrapper').attr('style', '');
                     }
@@ -64,10 +59,10 @@ function newGame() {
                     flipedCards = 0;
 
                 } else {
-                    setTimeout(() => { // flippe back couple
+                    setTimeout(() => { 
                         previousCardFliped.removeClass('upside');
                         cardToFlip.removeClass('upside');
-                        previousCardFliped = null;// restart couple search
+                        previousCardFliped = null;
                         flipedCards = 0;
                     }, 1000);
                 }

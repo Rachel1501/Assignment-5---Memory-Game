@@ -1,51 +1,78 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400');
+
 body {
     margin: 0px;
-    overflow: hidden;
-}
-.menu {
-    position: fixed;
-    right: 0px;
-    width: 100px;
-    height: 100vh;
+    /* overflow: hidden; */
 }
 .page {
-    background-image: url('');
+    display: flex;
+    justify-content: center;
+    align-items: contain;
+    background-image: url('../img/back6.png');
     background-size: cover;
-    padding-bottom: 20%;
+    font-family: 'Montserrat' ,sans-serif;
+    height: 100vh;
+}
+.container {
+    padding-bottom: 40px;
 }
 .header {
     transition-property: all;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: black;
+    padding: 5px 10px;
 }
-.imgContainer {
-    height: 160px;
-    width: 160px;
+.header h1 {
+    color: #E1EFE9;
 }
+button {
+    height: 30px;
+    font-family: 'Montserrat' ,sans-serif;
+    font-weight: 400;
+    border: solid #0abbb5;
+    padding: 5px 10px;
+    border-radius: 9px;
+    color: black;
+}
+
 .card img {
-    width:160px;
-    height: 160px;
+    width:140px;
+    height: 140px;
     position: absolute;
     border-radius: 9px;
 }
 .card {
     transform-style: preserve-3d;
     transition: all 0.5s ease;
-    height: 160px;
-    width: 160px;
+    height: 140px;
+    width: 140px;
     margin: 5px;
     cursor: pointer;
     position: relative;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 9px;
 }
 .card.upside {
     transform: rotateY(180deg)
 }
-.backImg {
+.back-img {
     position: absolute;
     backface-visibility: hidden;
 }
-.frontImg {
+.front-img {
+    background-color: white;
+    border: 3px solid #0abbb5;
+    padding: 5px;
     position: absolute;
     backface-visibility: hidden;
     transform: rotateY(180deg);
+}
+div.col-md-3.col-xs-6 , .col-md-12.col-xs-12 {
+    display: flex;
+    justify-content: center;
 }
 #modal-wrapper {
     position: fixed;
@@ -56,13 +83,31 @@ body {
     background-color: rgba(0,0,0,0.5);
     z-index: 123;
 }
-.myModal {
+.my-modal {
     background-color: white;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translateX(-50%) translateY(-50%);
     min-width: 200px;
-    min-height: 100px;;
+    min-height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: #f7cd54;
+    border-radius: 9px;
+    padding: 5px;
+    width: 300px;
+}
+.modal-title {
+    color: #E1EFE9;
+    font-weight: 400;
+    font-size: 30px;
+    text-shadow: 1px 1px 2px black, 0 0 45px #E1EFE9, 0 0 15px #E1EFE9;
+}
+.my-modal button {
+    padding: 5px;
+    margin: 5px;
 }
 
