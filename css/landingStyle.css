@@ -51,6 +51,9 @@ html, body {
     text-shadow: 1px 1px 2px black, 0 0 45px #E1EFE9, 0 0 15px #E1EFE9;
     border: solid #E1EFE9;
 }
+#input-name {
+    border-radius: 9px;
+}
 
 
 @media screen and (max-width: 900px) {

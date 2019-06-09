@@ -22,10 +22,11 @@ function newGame() {
     var imgArr = ['img1', 'img1', 'img2', 'img2', 'img3', 'img3', 'img4', 'img4', 'img5', 'img5', 'img6', 'img6',]
     var mySound = new sound('./sound/backsound.mp3');
     var victorySound = new sound('./sound/win.mp3');
-    var previousCardFliped = null; 
-    var flipedMatches = 0; 
+    var previousCardFliped = null;
+    var flipedMatches = 0;
     var couplesInTheGame = 6;
     var flipedCards = 0;
+    var numberOfMistake = 0;
 
     shuffleArray(imgArr);
     for (var i = 0; i < imgArr.length; i++) {
@@ -36,30 +37,70 @@ function newGame() {
     $('.card').on('click', function () {
         mySound.play();
         flipedCards = flipedCards + 1;
-        if (flipedCards <= 2) { 
+        if (flipedCards <= 2) {
             var cardToFlip = $(this);
-            if (cardToFlip.hasClass('upside')) return; 
-            cardToFlip.addClass('upside'); 
-            if (previousCardFliped === null) { 
+            if (cardToFlip.hasClass('upside')) return;
+            cardToFlip.addClass('upside');
+            if (previousCardFliped === null) {
                 previousCardFliped = cardToFlip;
 
             } else {
                 var card1 = previousCardFliped.attr('name');
                 var card2 = cardToFlip.attr('name');
 
-                if (card1 === card2) { 
+                if (card1 === card2) {
                     flipedMatches++;
                     if (flipedMatches === couplesInTheGame) {
-                        console.log("win");
-                        // var mySound = mySound.pause();
+                        mySound.stop();
                         victorySound.play();
                         $('#modal-wrapper').attr('style', '');
+                        $('#our-user').text(localStorage.userName)
+                        $('#mistakes').text(numberOfMistake);
+
+                        // for champion
+                        var key = localStorage.userName;
+                        localStorage.setItem(key, numberOfMistake);
+                        var champScore = 100;
+                        var champName = '';
+                        for (var i = 0; i < localStorage.length; i++) {
+                            for (var j = 0; j < localStorage.length; j++) {
+                                if (i !== j) {
+                                    var player1 = localStorage.key(i);
+                                    var player2 = localStorage.key(j);
+                                    var player1Score = localStorage.getItem(player1);
+                                    var player2Score = localStorage.getItem(player2);
+                                    var player1ScoreNum = parseInt(player1Score);
+                                    var player2ScoreNum = parseInt(player2Score);
+                                    if (player1ScoreNum < player2ScoreNum) {
+                                        roundChamp = player1;
+                                        if (player1ScoreNum < champScore) {
+                                            champScore = player1ScoreNum;
+                                            champName = player1;
+                                        }
+                                    } else {
+                                        roundChamp = player2;
+                                        if (player2ScoreNum < champScore) {
+                                            champScore = player2ScoreNum;
+                                            champName = player2;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        if (champName == localStorage.userName) {
+                            $('#champ').text('YOU');
+                            $('#campScore').text(champScore);
+                        } else {
+                            $('#champ').text(champName);
+                            $('#campScore').text(champScore);
+                        }
                     }
                     previousCardFliped = null;
                     flipedCards = 0;
 
                 } else {
-                    setTimeout(() => { 
+                    numberOfMistake++;
+                    setTimeout(() => {
                         previousCardFliped.removeClass('upside');
                         cardToFlip.removeClass('upside');
                         previousCardFliped = null;
@@ -93,3 +134,4 @@ function sound(src) {
         this.sound.pause();
     }
 }
+

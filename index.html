@@ -10,7 +10,7 @@
 	<link href="css/waypoints.css" rel="stylesheet" />
 	<script src="js/jquery.waypoints.min.js" type="text/javascript"></script>
 	<script src="js/waypoints.js" type="text/javascript"></script>
-
+	<script src="js/my-js.js"></script>
 </head>
 
 <body>
@@ -20,14 +20,26 @@
 				<section class="os-animation" data-os-animation="bounceInUp" data-os-animation-delay="0s">
 					<h1>WELCOME!</h1>
 				</section>
+
 				<section class="os-animation" data-os-animation="bounceInUp" data-os-animation-delay=".1s">
+						<input type="text" id="input-name" placeholder="Your Name">
 					<a class="btn"
-						href="file:///C:/ITC/dev/Assignments/Assignment5-memorygame/index-after-landing.html">LET'S
+						href="file:///C:/ITC/dev/Assignments/Assignment5-memorygame/index-after-landing.html" onclick="sendName()">LET'S
 						PLAY</a>
 				</section>
 			</div>
 		</div>
 	</section>
+
+	<script>
+		function sendName(){
+			var userName = document.getElementById('input-name').value;
+			localStorage.userName = userName;
+		}
+		
+	</script>
+
+	
 </body>
 
 </html>

@@ -2,7 +2,6 @@
 
 body {
     margin: 0px;
-    /* overflow: hidden; */
 }
 .page {
     display: flex;
@@ -11,7 +10,6 @@ body {
     background-image: url('../img/back6.png');
     background-size: cover;
     font-family: 'Montserrat' ,sans-serif;
-    height: 100vh;
 }
 .container {
     padding-bottom: 40px;
@@ -99,6 +97,7 @@ div.col-md-3.col-xs-6 , .col-md-12.col-xs-12 {
     border-radius: 9px;
     padding: 5px;
     width: 300px;
+    box-shadow: 6px 6px 21px 7px #888888;
 }
 .modal-title {
     color: #E1EFE9;
@@ -111,3 +110,28 @@ div.col-md-3.col-xs-6 , .col-md-12.col-xs-12 {
     margin: 5px;
 }
 
+
+@media screen and (max-width: 768px) {
+    .card img {
+        width: 100px;
+        height: 100px;
+        margin: 3px;
+    }
+    .card {
+        width: 100px;
+        height: 100px;
+        margin: 3px;
+    }
+}
+@media screen and (max-width: 480px) {
+    .card img {
+        width: 70px;
+        height: 70px;
+        margin: 2px;
+    }
+    .card {
+        width: 70px;
+        height: 70px;
+        margin: 2px;
+    }
+} 
